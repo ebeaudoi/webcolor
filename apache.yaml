@@ -14,7 +14,7 @@ spec:
         app: webserver
     spec:
       containers:
-        - image: quay.tdl.devu.ca:8443/images/http-custom:latest
+        - image: registry.access.redhat.com/ubi9/httpd-24
           name: webserver
           ports:
             - containerPort: 8080

@@ -1,4 +1,4 @@
-FROM quay.tdl.devu.ca:8443/images/httpd-24:latest
+FROM registry.access.redhat.com/ubi9/httpd-24
 
 # Add application sources
 ADD app-src/index-2.html /var/www/html/index.html
