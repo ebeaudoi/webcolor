@@ -13,4 +13,4 @@ patches:
   patch: |-
     - op: replace
       path: /spec/template/spec/containers/0/image
-      value: ebdn.quay.com:8443/images/http-custom:latest
+      value: quay.io/ebeaudoi/httpd-24/webcolor.latest
