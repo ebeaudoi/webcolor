@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver
+  namespace: ebdn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      containers:
+        - image: quay.tdl.devu.ca:8443/images/http-custom:latest
+          name: webserver
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webserver
+  namespace: ebdn
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: webserver
+  type: ClusterIP
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: webserver
+  name: webserver
+  namespace: ebdn
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: webserver

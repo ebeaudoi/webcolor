@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: webserver
+  name: webserver
+  namespace: ebdn
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: webserver
+
