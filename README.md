@@ -10,7 +10,7 @@ It's a good project to use with gitops where you can make easy changes and test 
 FROM registry.access.redhat.com/ubi9/httpd-24
 
 # Add application sources
-ADD app-src/index-2.html /var/www/html/index.html
+ADD app-src/index.html /var/www/html/index.html
 
 # The run script uses standard ways to run the application
 CMD run-httpd
@@ -28,6 +28,8 @@ $ podman build -t quay.io/ebeaudoi/httpd-24/webcolor.latest .
 $ # Push the image to the registry
 $ podman push quay.io/ebeaudoi/httpd-24/webcolor.latest
 ```
+Note: You can change the image text color buy modifying the index.html file<br>
+
 3. Update the deployment
 Update the applicaion deployment to use the new custom image<br>
 ```bash
@@ -59,3 +61,4 @@ You can use kustomize to deploy the application<br>
 ```bash
 oc apply -f application/latest/
 ```
+
